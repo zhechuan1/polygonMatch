@@ -95,7 +95,8 @@ public class AddStreet {
             dbOperateService.addColumn(tbName,"street","街道");
             List<LinkedHashMap> linkedHashMaps = dbOperateService.queryAllDataByTableName(tbName);
             for (int k = 0; k < linkedHashMaps.size(); ++k) {/*遍历表数据*/
-                logger.info("[Tables "+tbName+" : "+((float)i/(float)(tables.size()-1))*100+"%]"+"[Datas : "+((float)k/(float) (linkedHashMaps.size()-1))*100+"%]");
+                if (k%100==0)
+                    logger.info("[Tables "+tbName+" : "+((float)i/(float)(tables.size()-1))*100+"%]"+"[Datas : "+((float)k/(float) (linkedHashMaps.size()-1))*100+"%]");
                 String jd84 = linkedHashMaps.get(k).get("jd84").toString();
                 String wd84 = linkedHashMaps.get(k).get("wd84").toString();
                 String id = linkedHashMaps.get(k).get("id").toString();

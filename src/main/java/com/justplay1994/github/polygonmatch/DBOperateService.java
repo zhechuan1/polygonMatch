@@ -129,7 +129,8 @@ public class DBOperateService {
             logger.debug("sql: "+sql);
             result = statement.execute(sql);
         } catch (SQLException e) {
-            if (e.getMessage().split(" ")[0].equalsIgnoreCase("Duplicate")){
+            if (e.getMessage().split(" ")[0].equalsIgnoreCase("Duplicate")
+                    || e.getMessage().equals("ORA-01430: 表中已存在要添加的列\n")){
                 result = true;
             }else{
                 logger.error("update database error! sql: "+sql+"\n",e);
