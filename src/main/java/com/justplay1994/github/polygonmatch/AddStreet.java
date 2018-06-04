@@ -96,7 +96,7 @@ public class AddStreet {
             List<LinkedHashMap> linkedHashMaps = dbOperateService.queryAllDataByTableName(tbName);
             for (int k = 0; k < linkedHashMaps.size(); ++k) {/*遍历表数据*/
                 if (k%100==0)
-                    logger.info("[Tables "+tbName+" : "+((float)i/(float)(tables.size()-1))*100+"%]"+"[Datas : "+((float)k/(float) (linkedHashMaps.size()-1))*100+"%]");
+                    logger.info("[Tables "+tbName+" : "+((float)(i+1)/(float)(tables.size()))*100+"%]"+"[Datas : "+((float)k/(float) (linkedHashMaps.size()-1))*100+"%]");
                 String jd84 = linkedHashMaps.get(k).get("jd84").toString();
                 String wd84 = linkedHashMaps.get(k).get("wd84").toString();
                 String id = linkedHashMaps.get(k).get("id").toString();
@@ -118,6 +118,7 @@ public class AddStreet {
         logger.info("pology:"+streetHashMapList.size());
         logger.info("totalHit:" + totalHit);
         logger.info("total:" + total);
+        logger.info("compute number: "+streetHashMapList.size()*total);
 
         /*等待线程执行结束*/
         while(executor.getActiveCount()!=0 || executor.getQueue().size()!=0){
